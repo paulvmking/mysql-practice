@@ -13,3 +13,82 @@ mysql> source test.sql
 +----------+
 1 row in set (0.01 sec)
 
+mysql> select * from Album limit 5
+    -> ;
++---------+---------------------------------------+----------+
+| AlbumId | Title                                 | ArtistId |
++---------+---------------------------------------+----------+
+|       1 | For Those About To Rock We Salute You |        1 |
+|       2 | Balls to the Wall                     |        2 |
+|       3 | Restless and Wild                     |        2 |
+|       4 | Let There Be Rock                     |        1 |
+|       5 | Big Ones                              |        3 |
++---------+---------------------------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select Title, Name from Album
+    -> join Artist on Album.ArtistId = Artist.ArtistId
+    -> limit 5;
++---------------------------------------+-----------+
+| Title                                 | Name      |
++---------------------------------------+-----------+
+| For Those About To Rock We Salute You | AC/DC     |
+| Balls to the Wall                     | Accept    |
+| Restless and Wild                     | Accept    |
+| Let There Be Rock                     | AC/DC     |
+| Big Ones                              | Aerosmith |
++---------------------------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> desc Genre
+    -> ;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| GenreId | int          | NO   | PRI | NULL    | auto_increment |
+| Name    | varchar(120) | YES  |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into Genre (name) values ("Trad");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT LAST_INSERT_ID();
++------------------+
+| LAST_INSERT_ID() |
++------------------+
+|               26 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Name FROM Genre WHERE GenreId = 26;
++------+
+| Name |
++------+
+| Trad |
++------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE Genre SET Name = ‘Traditional’ WHERE Name = ’Trad’;
+ERROR 1054 (42S22): Unknown column '’Trad’' in 'where clause'
+mysql> UPDATE Genre SET Name = ‘Traditional’ WHERE Name = "Trad";
+ERROR 1054 (42S22): Unknown column '‘Traditional’' in 'field list'
+mysql> update Genre set Name = "Traditional" where Name = "Trad"
+    -> ;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT Name FROM Genre WHERE GenreId = 26;
++-------------+
+| Name        |
++-------------+
+| Traditional |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> DELETE FROM Genre WHERE Name = "Traditional";
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT Name FROM Genre WHERE GenreId = 26;
+Empty set (0.00 sec)
+
