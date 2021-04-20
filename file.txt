@@ -3745,3 +3745,37 @@ mysql> SELECT MAX(HireDate) FROM Employee;
 +---------------------+
 1 row in set (0.00 sec)
 
+mysql> select avg(Total) from Invoice;
++------------+
+| avg(Total) |
++------------+
+|   5.651942 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select round(avg(Total), 2) from Invoice;
++----------------------+
+| round(avg(Total), 2) |
++----------------------+
+|                 5.65 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select total from Invoice 
+    -> where InvoiceID = 2;
++-------+
+| total |
++-------+
+|  3.96 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(UnitPrice * Quantity) FROM InvoiceLine
+    -> WHERE InvoiceId = 2;
++---------------------------+
+| SUM(UnitPrice * Quantity) |
++---------------------------+
+|                      3.96 |
++---------------------------+
+1 row in set (0.00 sec)
+
