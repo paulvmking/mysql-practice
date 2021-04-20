@@ -6283,3 +6283,7 @@ mysql> INSERT INTO Track (Name, AlbumId, MediaTypeId, GenreId, Composer, Millise
     -> VALUES ("I Will Follow", 348, 2, 1, "U2", 220000, 1234, 0.99);
 Query OK, 1 row affected (0.03 sec)
 
+mysql> notee file.txt 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notee file.txt' at line 1
+mysql> notee;
