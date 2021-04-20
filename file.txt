@@ -6266,3 +6266,20 @@ mysql> SELECT Album.Title, ROUND(SUM(UnitPrice), 2) FROM Track
 +-------------------------------------------------------------------------------------------------+--------------------------+
 347 rows in set (0.01 sec)
 
+mysql> INSERT INTO MediaType (Name)
+    -> VALUES ("Test Media 1");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> INSERT INTO Album (Title, ArtistId)
+    -> VALUES ("Boy", 150);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use chinook
+ERROR 1049 (42000): Unknown database 'chinook'
+mysql> use Chinook
+Database changed
+mysql> INSERT INTO Track (Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice)
+    -> VALUES ("I Will Follow", 348, 2, 1, "U2", 220000, 1234, 0.99);
+Query OK, 1 row affected (0.03 sec)
+
