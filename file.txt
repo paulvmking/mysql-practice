@@ -3713,3 +3713,19 @@ mysql> SELECT Employee.FirstName AS Employee, COUNT(Customer.FirstName) AS Custo
 +----------+----------+
 1 row in set (0.00 sec)
 
+mysql> select min(LastName) from Customer;
++---------------+
+| min(LastName) |
++---------------+
+| Almeida       |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(BirthDate) FROM Employee;
++---------------------+
+| MIN(BirthDate)      |
++---------------------+
+| 1947-09-19 00:00:00 |
++---------------------+
+1 row in set (0.00 sec)
+
