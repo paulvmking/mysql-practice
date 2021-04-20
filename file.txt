@@ -3729,3 +3729,19 @@ mysql> SELECT MIN(BirthDate) FROM Employee;
 +---------------------+
 1 row in set (0.00 sec)
 
+mysql> select max(LastName) from Customer;
++---------------+
+| max(LastName) |
++---------------+
+| Zimmermann    |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(HireDate) FROM Employee;
++---------------------+
+| MAX(HireDate)       |
++---------------------+
+| 2004-03-04 00:00:00 |
++---------------------+
+1 row in set (0.00 sec)
+
