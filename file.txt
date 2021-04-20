@@ -3671,3 +3671,45 @@ mysql> SELECT EmployeeId, LastName, FirstName, HireDate FROM Employee
 +------------+----------+-----------+---------------------+
 3 rows in set (0.00 sec)
 
+mysql> select count(*) from Customer;
++----------+
+| count(*) |
++----------+
+|       59 |
++----------+
+1 row in set (0.00 sec)
+mysql> select count(FirstName) from Customer;
++------------------+
+| count(FirstName) |
++------------------+
+|               59 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from Customer
+    -> where FirstName = 'Frank';
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(FirstName) FROM Customer WHERE SupportRepId = 4;
++------------------+
+| COUNT(FirstName) |
++------------------+
+|               20 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Employee.FirstName AS Employee, COUNT(Customer.FirstName) AS Customer FROM Employee
+    -> JOIN Customer ON Customer.SupportRepId = Employee.EmployeeId
+    -> WHERE Employee.FirstName = 'Jane';
++----------+----------+
+| Employee | Customer |
++----------+----------+
+| Jane     |       21 |
++----------+----------+
+1 row in set (0.00 sec)
+
